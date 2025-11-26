@@ -21,7 +21,41 @@ To find the largest Number From an array.
 12. Store the content of the Accumulator (i.e., the largest number) in memory at the required address.
 13. End the program.
 ## Program:
+; Program to find the greatest number using I/O Ports
+
+IN 01H        ; Read first number
+MOV D, A      ; Assume first number is greatest
+
+IN 02H        ; Read second number
+CMP D
+JC NEXT2      ; If A < D, skip update
+MOV D, A      ; Else update greatest
+NEXT2: 
+
+IN 03H        ; Read third number
+CMP D
+JC NEXT3
+MOV D, A
+NEXT3:
+
+IN 04H        ; Read fourth number
+CMP D
+JC NEXT4
+MOV D, A
+NEXT4:
+
+IN 05H        ; Read fifth number
+CMP D
+JC DONE
+MOV D, A
+
+DONE: MOV A, D
+OUT 06H       ; Output greatest number at port 06H
+HLT
+
 ## output:
+<img width="940" height="459" alt="image" src="https://github.com/user-attachments/assets/115a64c8-222d-4b7f-a962-26a803af8997" />
+
 ## Result:
 Thus the program to find largest number in an array was executed.
 ## Exp: 2 (b) Find smallest No. from an array.
@@ -43,7 +77,39 @@ To find the smallest No. from an array. Apparatus required: 8085 Simulator, PC.
 10. Store the content of the Accumulator in a desired memory location (e.g., 4300H).
 11. End the program.
 ## Program:
+IN 01H        ; Read first number
+MOV D, A      ; Assume first number is smallest
+
+IN 02H        ; Read second number
+CMP D
+JNC NEXT2     ; If A >= D, skip update
+MOV D, A      ; Else update smallest
+NEXT2: 
+
+IN 03H        ; Read third number
+CMP D
+JNC NEXT3
+MOV D, A
+NEXT3:
+
+IN 04H        ; Read fourth number
+CMP D
+JNC NEXT4
+MOV D, A
+NEXT4:
+
+IN 05H        ; Read fifth number
+CMP D
+JNC DONE
+MOV D, A
+
+DONE: MOV A, D
+OUT 07H       ; Output smallest number at port 07H
+HLT
+
 ## output:
+<img width="940" height="459" alt="image" src="https://github.com/user-attachments/assets/52678932-f683-41e2-8500-a73b28d345a9" />
+
 ## Result:
 Thus the program to find smallest number in an array was executed.
 
